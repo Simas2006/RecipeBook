@@ -1,0 +1,14 @@
+{
+  "name": "recipebook",
+  "version": "1.0.0",
+  "description": "Recipe book",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js <PORT>"
+  },
+  "author": "Simas Juknelis",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.83.0"
+  }
+}
