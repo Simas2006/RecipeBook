@@ -12,19 +12,20 @@ app.get("/",function(request,response) {
 app.get("/register",function(request,response) {
   var qs = decodeURIComponent(request.url.split("?").slice(1).join("?")).split(",");
   fs.readdir(__dirname + "/recipes",function(err,files) {
-    if ( err ) throw err;
+    if ( err ) {
+      response.send(err.message);
+    } else
     if ( files.indexOf(qs[1] + ".html") > -1 ) {
-      response.send("err_name_in_use");
+      response.send("Name is in use");
     } else {
       requestLib(qs[0],function(err,didRespond,body) {
-        if ( err ) throw err;
-        if ( didRespond ) {
+        if ( err ) {
+          response.send(err.message);
+        } else {
           fs.writeFile(__dirname + "/recipes/" + qs[1] + ".html",body,function(err) {
             if ( err ) throw err;
             response.send("ok");
           });
-        } else {
-          response.send("err_no_response");
         }
       });
     }
@@ -40,3 +41,7 @@ app.get("/list",function(request,response) {
 app.listen(PORT,function() {
   console.log("Listening on port " + PORT);
 });
+
+/*
+
+*/
