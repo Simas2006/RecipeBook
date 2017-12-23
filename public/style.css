@@ -1,0 +1,29 @@
+body {
+  font-family: "Verdana";
+  text-align: left;
+}
+input {
+  width: 90%;
+  border: 0px;
+  border-bottom: 1px solid #000;
+  font-size: 125%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+tr,td,th {
+  border: 1px solid #eee;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #eee;
+}
+tr:hover {
+  background-color: #ddd;
+}
+th {
+  background-color: #33a;
+  color: #fff;
+}
