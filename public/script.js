@@ -33,7 +33,11 @@ function renderTable() {
 function registerNewRecipe() {
   var req = new XMLHttpRequest();
   req.addEventListener("load",function() {
-    location.reload();
+    if ( this.responseText == "ok" ) {
+      location.reload();
+    } else {
+      alert("An error occurred: " + this.responseText);
+    }
   });
   req.open("GET","/register?" + document.getElementById("link").value + "," + document.getElementById("title").value);
   req.send();
