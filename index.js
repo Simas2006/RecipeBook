@@ -11,15 +11,24 @@ app.get("/",function(request,response) {
 });
 app.get("/register",function(request,response) {
   var qs = decodeURIComponent(request.url.split("?").slice(1).join("?")).split(",");
-  requestLib(qs[0],function(err,didRespond,body) {
+  fs.readdir(function(err,files) {
     if ( err ) throw err;
-    if ( didRespond ) {
-      fs.writeFile(__dirname + "/recipes/" + qs[1] + ".html",body,function(err) {
+    if ( files.indexOf(qs[1] + ".html") > -1 ) {
+      response.send("err_name_in_use");
+    } else {
+      requestLib(qs[0],function(err,didRespond,body) {
         if ( err ) throw err;
-        response.send("ok");
+        if ( didRespond ) {
+          fs.writeFile(__dirname + "/recipes/" + qs[1] + ".html",body,function(err) {
+            if ( err ) throw err;
+            response.send("ok");
+          });
+        } else {
+          response.send("err_no_response");
+        }
       });
     }
-  })
+  });
 });
 app.get("/list",function(request,response) {
   fs.readdir(__dirname + "/recipes",function(err,files) {
