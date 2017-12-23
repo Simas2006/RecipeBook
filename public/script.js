@@ -1,7 +1,7 @@
 function renderTable() {
   var req = new XMLHttpRequest();
   req.addEventListener("load",function() {
-    var data = this.responseText.split(",");
+    var data = this.responseText.split(",").map(item => item.split(".html").join(""));
     var table = document.getElementById("table");
     var row = document.createElement("tr");
     var title = document.createElement("th");
@@ -11,6 +11,7 @@ function renderTable() {
     link.innerText = "Link";
     row.appendChild(link);
     table.appendChild(row);
+    if ( data[0] == "" && data.length == 1 ) return;
     for ( var i = 0; i < data.length; i++ ) {
       var row = document.createElement("tr");
       var title = document.createElement("td");
@@ -18,7 +19,7 @@ function renderTable() {
       row.appendChild(title);
       var link = document.createElement("td");
       var a = document.createElement("a");
-      a.href = "/recipes/" + data[i];
+      a.href = "/recipes/" + data[i] + ".html";
       a.innerText = "Get Recipe";
       link.appendChild(a);
       row.appendChild(link);
@@ -27,6 +28,10 @@ function renderTable() {
   });
   req.open("GET","/list");
   req.send();
+}
+
+function registerNewRecipe() {
+  
 }
 
 window.onload = renderTable;

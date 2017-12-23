@@ -4,10 +4,6 @@ var express = require("express");
 var app = express();
 var PORT = process.argv[2] || 8000;
 
-String.prototype.replaceAll = function(o,n) {
-  return this.split(o).join(n);
-}
-
 app.use("/recipes",express.static(__dirname + "/recipes"));
 app.use("/public",express.static(__dirname + "/public"));
 app.get("/",function(request,response) {
@@ -18,7 +14,7 @@ app.get("/register",function(request,response) {
   requestLib(qs[0],function(err,didRespond,body) {
     if ( err ) throw err;
     if ( didRespond ) {
-      fs.writeFile(__dirname + "/recipes/" + qs[1].replaceAll("-"," ").replaceAll("?","qmark") + ".html",body,function(err) {
+      fs.writeFile(__dirname + "/recipes/" + qs[1] + ".html",body,function(err) {
         if ( err ) throw err;
         response.send("ok");
       });
