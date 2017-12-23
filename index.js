@@ -11,7 +11,7 @@ app.get("/",function(request,response) {
 });
 app.get("/register",function(request,response) {
   var qs = decodeURIComponent(request.url.split("?").slice(1).join("?")).split(",");
-  fs.readdir(function(err,files) {
+  fs.readdir(__dirname + "/recipes",function(err,files) {
     if ( err ) throw err;
     if ( files.indexOf(qs[1] + ".html") > -1 ) {
       response.send("err_name_in_use");
