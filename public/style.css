@@ -16,9 +16,11 @@ button {
   border-radius: 500px;
   font-family: "Verdana";
   font-size: 100%;
+  background-color: rgb(177,127,198);
+  color: #fff;
 }
 a {
-  color: #090;
+  color: purple;
 }
 div.box {
   border: 1px solid #000;
@@ -44,6 +46,6 @@ tr:hover {
   background-color: #ddd;
 }
 th {
-  background-color: #080;
+  background-color: rgb(177,127,198);
   color: #fff;
 }
