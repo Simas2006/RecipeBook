@@ -20,6 +20,7 @@ function renderTable() {
       var link = document.createElement("td");
       var a = document.createElement("a");
       a.href = "/recipes/" + data[i] + ".html";
+      a.target = "_blank";
       a.innerText = "Get Recipe";
       link.appendChild(a);
       row.appendChild(link);
