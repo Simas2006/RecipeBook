@@ -1,6 +1,10 @@
 body {
   font-family: "Verdana";
   text-align: left;
+  background-image: url("bg.png");
+}
+h1 {
+  color: #090;
 }
 input {
   width: 85%;
@@ -19,6 +23,7 @@ a {
 div.box {
   border: 1px solid #000;
   padding: 5px;
+  background-color: #fff;
 }
 
 table {
@@ -32,10 +37,13 @@ tr,td,th {
 tr:nth-child(even) {
   background-color: #eee;
 }
+tr:nth-child(odd) {
+  background-color: #fff;
+}
 tr:hover {
   background-color: #ddd;
 }
 th {
-  background-color: #33a;
+  background-color: #080;
   color: #fff;
 }
