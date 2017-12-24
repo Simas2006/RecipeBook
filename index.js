@@ -41,7 +41,3 @@ app.get("/list",function(request,response) {
 app.listen(PORT,function() {
   console.log("Listening on port " + PORT);
 });
-
-/*
-
-*/
